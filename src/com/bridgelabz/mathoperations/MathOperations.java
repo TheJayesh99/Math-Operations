@@ -114,5 +114,16 @@ public class MathOperations
 			}
 		});
 		
+		/*
+		 * Performing some actions using streams
+		 */
+		
+		//uc 2.1 iterate number using streams
+		System.out.println("\nNumbers printed using streams are");
+		numberList.stream()
+		.forEach(n->{
+			System.out.println(n);
+		});
+		
 	}
 }
