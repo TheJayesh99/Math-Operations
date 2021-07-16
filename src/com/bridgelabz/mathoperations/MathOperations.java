@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 //added functional interface which has 1 abstract method calculate
 @FunctionalInterface
@@ -97,10 +98,20 @@ public class MathOperations
 		});
 		
 		//method 6 using functional interface to convert integer to string
-		System.out.println("Converting number list into double value");
+		System.out.println("\nConverting number list into double value");
 		Function<Integer, Double> doubleFunction = Integer::doubleValue;
 		numberList.forEach(n->{
 			System.out.println(doubleFunction.apply(n));
+		});
+		
+		//method 7 check even number in list
+		System.out.println("\nCheck Even number in list and printing them");
+		Predicate<Integer> checkEven = n -> n%2 == 0 ;
+		numberList.forEach(n->{
+			if(checkEven.test(n))
+			{
+				System.out.println("Value " + n );
+			}
 		});
 		
 	}
