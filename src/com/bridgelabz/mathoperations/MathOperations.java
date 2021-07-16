@@ -121,9 +121,14 @@ public class MathOperations
 		//uc 2.1 iterate number using streams
 		System.out.println("\nNumbers printed using streams are");
 		numberList.stream()
-		.forEach(n->{
-			System.out.println(n);
-		});
+					.forEach(n->{
+							System.out.println(n);
+					});
 		
+		//uc 2.2 transform integer into double
+		System.out.println("\nNumbers converted into double using stream are ");
+		numberList.stream()
+					.map(Integer::doubleValue) //converting integer to double
+					.forEach(n->System.out.println(n)); // printing converted values
 	}
 }
