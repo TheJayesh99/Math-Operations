@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 //added functional interface which has 1 abstract method calculate
 @FunctionalInterface
@@ -130,5 +131,14 @@ public class MathOperations
 		numberList.stream()
 					.map(Integer::doubleValue) //converting integer to double
 					.forEach(n->System.out.println(n)); // printing converted values
+
+		
+		//uc 2.3 transform integer into double and store them in list
+		System.out.println("\nNumbers converted into double using stream and store them to list ");
+		List<Double> doublelist = numberList.stream()
+								.map(Integer::doubleValue) //converting integer to double
+								.collect(Collectors.toList()); // storing converted values into new list
+		System.out.println("value in new list are "+ doublelist);
+	
 	}
 }
