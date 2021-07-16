@@ -1,11 +1,13 @@
 package com.bridgelabz.mathoperations;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 //added functional interface which has 1 abstract method calculate
@@ -140,5 +142,11 @@ public class MathOperations
 								.collect(Collectors.toList()); // storing converted values into new list
 		System.out.println("value in new list are "+ doublelist);
 	
+		//uc 2.4 filter even numbers and store them
+		System.out.println("\nEven Numbers in number list are");
+		List<Integer>evenNumberList = numberList.stream()
+												.filter(checkEven)
+												.collect(Collectors.toList());
+		System.out.println(evenNumberList);
 	}
 }
