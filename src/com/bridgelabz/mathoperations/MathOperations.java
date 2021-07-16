@@ -1,5 +1,10 @@
 package com.bridgelabz.mathoperations;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
+
 //added functional interface which has 1 abstract method calculate
 @FunctionalInterface
 interface MyMathFuntion
@@ -20,19 +25,75 @@ public class MathOperations
 		MyMathFuntion Subtract = (x,y) -> (x-y);
 		MyMathFuntion Multiply = (x,y) -> (x*y);
 		MyMathFuntion Division = (x,y) -> (x/y);
-		
+
 		//calling and printing values returned by functions
 		System.out.println("Result using lambda functions");
 		System.out.println("Addition is "+ add.calculate(10, 5));
 		System.out.println("Subtract is "+ Subtract.calculate(10, 5));
 		System.out.println("Multiply is "+ Multiply.calculate(10, 5));
 		System.out.println("Divide is "+ Division.calculate(10, 5));
-		
+
 		//passing lambda function as function parameter
 		System.out.println("\nResult by lambda functions as function parameter");
 		MyMathFuntion.printResult("Addition", 10, 5, add);
 		MyMathFuntion.printResult("Subtract", 10, 5, Subtract);
 		MyMathFuntion.printResult("Multiply", 10, 5, Multiply);
 		MyMathFuntion.printResult("Divide", 10, 5, Division);
+
+		//creating Number list
+		List<Integer> numberList = new ArrayList<Integer>();
+		for (int i = 0; i < 6; i++)
+		{
+			numberList.add(i);
+		}
+
+		//method 1 using iterator
+		System.out.println("\nNumbers using Iterator");
+		Iterator<Integer> it = numberList.iterator();
+		//number list using iterator
+		while (it.hasNext()) 
+		{
+			Integer integer = it.next();
+			System.out.println(integer);
+		}
+
+		//method 2 using consumer interface
+		class Myconsumer implements Consumer<Integer>
+		{
+			public void accept(Integer t) 
+			{			
+				System.out.println(t);
+			}		
+
+		}
+		
+		Myconsumer action = new Myconsumer();
+		System.out.println("\nNumbers using consumer interface");
+		numberList.forEach(action);
+
+		//method 3 Traversing using anonymous consumer
+		System.out.println("\nNumbers using anonymous consumer");
+		numberList.forEach(new Consumer<Integer>() 
+		{
+			public void accept(Integer t) 
+			{
+				System.out.println(t);	
+			}
+		}
+		);
+		
+		//method 4 explicit lambda function
+		System.out.println("\nNumbers using explicit lambda");
+		Consumer<Integer> numberListAction = n -> {
+			System.out.println(n);
+		};
+		numberList.forEach(numberListAction);
+
+		//method 5 implicit lambda function
+		System.out.println("\nNumbers using implicit lambda");
+		numberList.forEach(n -> {
+			System.out.println(n);
+		});
+		
 	}
 }
