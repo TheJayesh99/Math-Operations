@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 //added functional interface which has 1 abstract method calculate
 @FunctionalInterface
@@ -93,6 +94,13 @@ public class MathOperations
 		System.out.println("\nNumbers using implicit lambda");
 		numberList.forEach(n -> {
 			System.out.println(n);
+		});
+		
+		//method 6 using functional interface to convert integer to string
+		System.out.println("Converting number list into double value");
+		Function<Integer, Double> doubleFunction = Integer::doubleValue;
+		numberList.forEach(n->{
+			System.out.println(doubleFunction.apply(n));
 		});
 		
 	}
