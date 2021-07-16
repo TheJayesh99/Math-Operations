@@ -175,5 +175,13 @@ public class MathOperations
 		int count = (int) numberList.stream()
 									.count(); //returns the number of element present in it
 		System.out.println("Average of the numbers present in the list is "+ sumInteger/count);
+		
+		//uc2.8 find at least 1 number is even or all numbers are even
+		boolean allEvenNumber = numberList.stream()
+				.allMatch(checkEven); //returns true if all value matches 
+		boolean atleast1Even = numberList.stream()
+				.anyMatch(checkEven);//returns true if any 1 value match 
+		System.out.println("\nAll numbers are even in the list = " +allEvenNumber
+				+"\nAt least 1 number present in the list = " +atleast1Even);
 	}
 }
