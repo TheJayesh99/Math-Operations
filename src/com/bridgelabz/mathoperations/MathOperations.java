@@ -62,7 +62,7 @@ public class MathOperations
 		}
 
 		//method 2 using consumer interface
-		class Myconsumer implements Consumer<Integer>
+		class MyConsumer implements Consumer<Integer>
 		{
 			public void accept(Integer t) 
 			{			
@@ -71,7 +71,7 @@ public class MathOperations
 
 		}
 		
-		Myconsumer action = new Myconsumer();
+		MyConsumer action = new MyConsumer();
 		System.out.println("\nNumbers using consumer interface");
 		numberList.forEach(action);
 
@@ -168,5 +168,12 @@ public class MathOperations
 									.orElse(null);
 		System.out.println("\nIn the list minimum Even number is "+ minimumValue +" and maximum is "+ maximumValue);
 		
+		//uc2.7 find sum and average
+		Integer sumInteger = numberList.stream()
+										.reduce(0,(a,b)->a+b); //returns the sum of the number
+		System.out.println("Sum of numbers in the list is "+ sumInteger);
+		int count = (int) numberList.stream()
+									.count(); //returns the number of element present in it
+		System.out.println("Average of the numbers present in the list is "+ sumInteger/count);
 	}
 }
